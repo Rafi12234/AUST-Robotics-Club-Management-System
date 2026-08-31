@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+@import './styles/design-tokens.css';
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-canvas);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+    background:
+      radial-gradient(circle at 15% -10%, rgba(57, 181, 74, 0.12), transparent 34rem),
+      radial-gradient(circle at 100% 0%, rgba(0, 104, 56, 0.1), transparent 30rem),
+      var(--color-canvas);
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+    isolation: isolate;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(57, 181, 74, 0.28);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-canvas),
+      0 0 0 4px var(--color-brand-400);
+  }
+}
+
+@layer components {
+  /* Faint engineered grid used behind hero/marketing surfaces. */
+  .grid-layer {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--color-edge-subtle) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-edge-subtle) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 78%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 78%);
+    pointer-events: none;
+  }
+
+  /* Self-drawing SVG geometry in the hero. */
+  .trace {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+
+  .trace {
+    stroke-dashoffset: 0;
+  }
+}

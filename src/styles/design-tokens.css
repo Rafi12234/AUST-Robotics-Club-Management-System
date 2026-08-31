@@ -1,0 +1,151 @@
+/* AUSTRC Design Tokens
+   Source of truth for shared visual primitives.
+
+   These are declared inside Tailwind's `@theme`, so every token below is
+   simultaneously a CSS variable AND a generated Tailwind utility.
+   Example: `--color-brand-500` produces `bg-brand-500`, `text-brand-500`,
+   `border-brand-500`.
+
+   Consume these utilities/variables before hardcoding new visual values.
+*/
+
+@theme {
+  /* ---------- Brand ---------- */
+  --color-brand-950: #002a17;
+  --color-brand-900: #003b20;
+  --color-brand-800: #00522c;
+  --color-brand-700: #006838;
+  --color-brand-600: #16853d;
+  --color-brand-500: #39b54a;
+  --color-brand-400: #58cf69;
+  --color-brand-300: #7ce288;
+
+  /* ---------- Surfaces ---------- */
+  --color-canvas: #050806;
+  --color-deep: #070b08;
+  --color-surface-1: #0b100d;
+  --color-surface-2: #101713;
+  --color-surface-3: #16201a;
+  --color-surface-hover: #1b271f;
+
+  /* ---------- Text ---------- */
+  --color-ink: #f1f2f2;
+  --color-muted: #b8c3bc;
+  --color-subtle: #7f9086;
+  --color-faint: #5e6b63;
+
+  /* ---------- Borders ---------- */
+  --color-edge-subtle: rgba(120, 255, 150, 0.1);
+  --color-edge: rgba(120, 255, 150, 0.16);
+  --color-edge-strong: rgba(120, 255, 150, 0.28);
+
+  /* ---------- Semantic ---------- */
+  --color-success: #39b54a;
+  --color-warning: #f5b942;
+  --color-danger: #ff5d5d;
+  --color-info: #56a8ff;
+
+  /* ---------- Typography ---------- */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.38);
+  --shadow-glow: 0 0 28px rgba(57, 181, 74, 0.14);
+  --shadow-glow-strong: 0 0 30px rgba(57, 181, 74, 0.3);
+
+  /* ---------- Motion ---------- */
+  --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --duration-instant: 90ms;
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 320ms;
+  --duration-route: 420ms;
+  --duration-hero: 650ms;
+
+  /* ---------- Layout ---------- */
+  --spacing-sidebar: 17rem;
+  --spacing-topbar: 4.25rem;
+  --spacing-readable: 47.5rem;
+  --spacing-page: 100rem;
+
+  /* ---------- Animations ---------- */
+  --animate-rise: rise var(--duration-hero) var(--ease-enter) both;
+  --animate-page-enter: rise var(--duration-route) var(--ease-enter) both;
+  --animate-sheet-in: sheet-in var(--duration-base) var(--ease-enter) both;
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-standard) forwards;
+  --animate-spin-slow: spin 48s linear infinite;
+  --animate-glow-drift: glow-drift 22s var(--ease-standard) infinite alternate;
+  --animate-trace: trace 2s var(--ease-enter) forwards;
+  --animate-soft-pulse: soft-pulse 2.4s var(--ease-standard) infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes sheet-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glow-drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-4%, 4%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes trace {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes soft-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.82);
+    }
+  }
+}
